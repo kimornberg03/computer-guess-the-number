@@ -1,22 +1,37 @@
 let MAX_NUMBER = 100
 let MIN_NUMBER = 0
 
-let guess
+let minGuess = MIN_NUMBER
+let maxGuess = MAX_NUMBER
+let counter = 0
+
+let guess = (minGuess + maxGuess) / 2
+
+
+
+counter = addEventListener("click", function() {
+    counter = counter + 1
+})
 
 document.getElementById('too-high-btn').addEventListener('click', function() {
-    setMessage(`Is it ${guess/2 + guess}?`)
+    maxGuess = guess
+    guess = (minGuess + maxGuess) / 2
+    setMessage(`Is it ${Math.floor(guess)}?`)
         // Vad ska hända när man tryckt too high?
+
 
 })
 
 document.getElementById('too-low-btn').addEventListener('click', function() {
-    setMessage(`Is it ${guess/2}?`)
+    minGuess = MIN_NUMBER + guess
+    guess = (minGuess + maxGuess) / 2
+    setMessage(`Is it ${Math.floor(guess)}?`)
         // Vad ska hända när man tryckt too low?
 
 })
 
 document.getElementById('is-correct-btn').addEventListener('click', function() {
-    setMessage("WOHO! ;)")
+    setMessage(`It was ${(counter)}?`)
         // Vad ska hända när man tryckt too low?
 
 })
@@ -30,7 +45,6 @@ function start() {
     document.getElementById('before-start').style.display = 'none'
     document.querySelector('main').style.display = 'block'
 
-    guess = 50
 
     setMessage(`Is it ${guess}?`)
 }
